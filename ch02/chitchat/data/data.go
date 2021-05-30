@@ -5,15 +5,16 @@ import (
 	"crypto/sha1"
 	"database/sql"
 	"fmt"
-	_ "github.com/lib/pq"
 	"log"
+
+	_ "github.com/lib/pq"
 )
 
 var Db *sql.DB
 
 func init() {
 	var err error
-	Db, err = sql.Open("postgres", "dbname=chitchat sslmode=disable")
+	Db, err = sql.Open("postgres", "host=db dbname=chitchat sslmode=disable")
 	if err != nil {
 		log.Fatal(err)
 	}
